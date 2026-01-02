@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fútbol Sudamericano - Pasión y Gloria</title>
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #000;
+            color: #fff;
+            line-height: 1.6;
+        }
+        header {
+            position: relative;
+            height: 100vh;
+            background: url('https://images.pexels.com/photos/3184430/pexels-photo-3184430.jpeg') no-repeat center center/cover;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+        header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+        }
+        header h1 {
+            position: relative;
+            z-index: 1;
+            font-size: 3rem;
+            font-weight: bold;
+            color: #FFD700;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.7);
+        }
+        header p {
+            position: relative;
+            z-index: 1;
+            font-size: 1.5rem;
+            color: #fff;
+        }
+        nav {
+            background-color: #333;
+            padding: 10px;
+            text-align: center;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+        nav a {
+            color: #FFD700;
+            margin: 0 15px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        nav a:hover {
+            color: #fff;
+        }
+        section {
+            padding: 50px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .section-title {
+            font-size: 2.5rem;
+            color: #FFD700;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .ligas {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+        .liga-card {
+            background-color: #222;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .liga-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 20px rgba(255, 215, 0, 0.3);
+        }
+        .liga-card img {
+            width: 80px;
+            height: 80px;
+            margin-bottom: 10px;
+        }
+        .clubes {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+        }
+        .club-card {
+            background-color: #222;
+            width: 250px;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .club-card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 20px rgba(255, 215, 0, 0.3);
+        }
+        .club-card img {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 10px;
+        }
+        .jugadores {
+            position: relative;
+            overflow: hidden;
+        }
+        .carrusel {
+            display: flex;
+            transition: transform 0.5s ease;
+        }
+        .jugador-card {
+            min-width: 300px;
+            margin: 0 10px;
+            background-color: #222;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+        }
+        .jugador-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 10px;
+        }
+        .competiciones {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+        .comp-card {
+            background-color: #222;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            transition: transform 0.3s;
+        }
+        .comp-card:hover {
+            transform: translateY(-5px);
+        }
+        .comp-card img {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 10px;
+        }
+        .datos-curiosos {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+        .dato-card {
+            background-color: #222;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            transition: background-color 0.3s;
+        }
+        .dato-card:hover {
+            background-color: #333;
+        }
+        button {
+            background-color: #FFD700;
+            color: #000;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+        button:hover {
+            background-color: #FFA500;
+        }
+        footer {
+            background-color: #333;
+            text-align: center;
+            padding: 20px;
+            color: #fff;
+        }
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2rem;
+            }
+            header p {
+                font-size: 1.2rem;
+            }
+            .section-title {
+                font-size: 2rem;
+            }
+            .liga-card, .club-card, .comp-card, .dato-card {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Fútbol Sudamericano</h1>
+        <p>Donde nace la pasión del fútbol</p>
+    </header>
+    
+    <nav>
+        <a href="#ligas">Ligas</a>
+        <a href="#clubes">Clubes</a>
+        <a href="#jugadores">Jugadores</a>
+        <a href="#competiciones">Competiciones</a>
+        <a href="#datos">Datos Curiosos</a>
+    </nav>
+    
+    <section id="ligas">
+        <h2 class="section-title">Ligas Sudamericanas</h2>
+        <div class="ligas">
+            <div class="liga-card">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/05/Flag_of_Brazil.svg/200px-Flag_of_Brazil.svg.png" alt="Brasil">
+                <h3>Brasil - Serie A</h3>
+                <p>La liga más competitiva del mundo, con equipos como Flamengo y Palmeiras dominando el escenario internacional.</p>
+            </div>
+            <div class="liga-card">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1a/Flag_of_Argentina.svg/200px-Flag_of_Argentina.svg.png" alt="Argentina">
+                <h3>Argentina - Primera División</h3>
+                <p>Conocida por su intensidad, River Plate y Boca Juniors son rivales eternos en el fútbol argentino.</p>
+            </div>
+            <div class="liga-card">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fe/Flag_of_Uruguay.svg/200px-Flag_of_Uruguay.svg.png" alt="Uruguay">
+                <h3>Uruguay - Primera División</h3>
+                <p>Peñarol y Nacional lideran una liga rica en historia y talento, cuna de estrellas mundiales.</p>
+            </div>
+            <div class="liga-card">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/21/Flag_of_Colombia.svg/200px-Flag_of_Colombia.svg.png" alt="Colombia">
+                <h3>Colombia - Categoría Primera A</h3>
+                <p>Millonarios y Atlético Nacional compiten en una liga apasionada con hinchadas fervorosas.</p>
+            </div>
+            <div class="liga-card">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e8/Flag_of_Ecuador.svg/200px-Flag_of_Ecuador.svg.png" alt="Ecuador">
+                <h3>Ecuador - Serie A</h3>
+                <p>Liga emergente con equipos como Emelec y Barcelona SC, destacando en competiciones continentales.</p>
+            </div>
+            <div class="liga-card">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/78/Flag_of_Chile.svg/200px-Flag_of_Chile.svg.png" alt="Chile">
+                <h3>Chile - Primera División</h3>
+                <p>Colo-Colo y Universidad de Chile dominan una liga con fuerte presencia en la Copa Libertadores.</p>
+            </div>
+            <div class="liga-card">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/cf/Flag_of_Peru.svg/200px-Flag_of_Peru.svg.png" alt="Perú">
+                <h3>Perú - Liga 1</h3>
+                <p>Alianza Lima y Universitario son íconos en una liga con historia y pasión inigualable.</p>
+            </div>
+        </div>
+    </section>
+    
+    <section id="clubes">
+        <h2 class="section-title">Clubes Históricos</h2>
+        <div class="clubes">
+            <div class="club-card">
+                <img src="https://images.pexels.com/photos/3184430/pexels-photo-3184430.jpeg" alt="Flamengo">
+                <h3>Flamengo (Brasil)</h3>
+                <p>Campeón de la Copa Libertadores 2019, con una hinchada de más de 40 millones.</p>
+            </div>
+            <div class="club-card">
+                <img src="https://images.pexels.com/photos/1229861/pexels-photo-1229861.jpeg" alt="River Plate">
+                <h3>River Plate (Argentina)</h3>
+                <p>4 veces campeón de la Libertadores, símbolo del fútbol argentino.</p>
+            </div>
+            <div class="club-card">
+                <img src="https://images.pexels.com/photos/4386431/pexels-photo-4386431.jpeg" alt="Peñarol">
+                <h3>Peñarol (Uruguay)</h3>
+                <p>5 títulos de Libertadores, el club más laureado de Sudamérica.</p>
+            </div>
+        </div>
+    </section>
+    
+    <section id="jugadores">
+        <h2 class="section-title">Jugadores Legendarios y Actuales</h2>
+        <div class="jugadores">
+            <div class="carrusel" id="carrusel">
+                <div class="jugador-card">
+                    <img src="https://images.pexels.com/photos/1181396/pexels-photo-1181396.jpeg" alt="Pelé">
+                    <h3>Pelé (Brasil)</h3>
+                    <p>3 Mundiales ganados, el Rey del Fútbol.</p>
+                </div>
+                <div class="jugador-card">
+                    <img src="https://images.pexels.com/photos/159304/network-cable-ethernet-computer-159304.jpeg" alt="Messi">
+                    <h3>Lionel Messi (Argentina)</h3>
+                    <p>8 Balones de Oro, ídolo del Barcelona y PSG.</p>
+                </div>
+                <div class="jugador-card">
+                    <img src="https://images.pexels.com/photos/1181671/pexels-photo-1181671.jpeg" alt="Maradona">
+                    <h3>Diego Maradona (Argentina)</h3>
+                    <p>Mundial 1986, mano de Dios y gol del siglo.</p>
+                </div>
+                <div class="jugador-card">
+                    <img src="https://images.pexels.com/photos/1229861/pexels-photo-1229861.jpeg" alt="Neymar">
+                    <h3>Neymar (Brasil)</h3>
+                    <p>Campeón olímpico 2016, estrella del PSG.</p>
+                </div>
+            </div>
+        </div>
+        <button onclick="moverCarrusel(-1)">Anterior</button>
+        <button onclick="moverCarrusel(1)">Siguiente</button>
+    </section>
+    
+    <section id="competiciones">
+        <h2 class="section-title">Competiciones</h2>
+        <div class="competiciones">
+            <div class="comp-card">
+                <img src="https://images.pexels.com/photos/114907/pexels-photo-114907.jpeg" alt="Copa Libertadores">
+                <h3>Copa Libertadores</h3>
+                <p>La competición más prestigiosa de clubes en Sudamérica, con 47 ediciones.</p>
+            </div>
+            <div class="comp-card">
+                <img src="https://images.pexels.com/photos/1181671/pexels-photo-1181671.jpeg" alt="Copa Sudamericana">
+                <h3>Copa Sudamericana</h3>
+                <p>Segunda competición continental, para equipos no clasificados a la Libertadores.</p>
+            </div>
+            <div class="comp-card">
+                <img src="https://images.pexels.com/photos/1229861/pexels-photo-1229861.jpeg" alt="Eliminatorias">
+                <h3>Eliminatorias Sudamericanas</h3>
+                <p>Ruta a la Copa del Mundo, con 10 selecciones compitiendo por 4.5 plazas.</p>
+            </div>
+        </div>
+    </section>
+    
+    <section id="datos">
+        <h2 class="section-title">Datos Curiosos</h2>
+        <div class="datos-curiosos">
+            <div class="dato-card">
+                <h3>Estadios Míticos</h3>
+                <p>El Maracaná (Brasil) ha visto finales épicas, con capacidad para 78.000 espectadores.</p>
+            </div>
+            <div class="dato-card">
+                <h3>Hinchadas Más Famosas</h3>
+                <p>La Barra Brava de Boca Juniors es una de las más apasionadas del mundo.</p>
+            </div>
+            <div class="dato-card">
+                <h3>Récords Históricos</h3>
+                <p>Brasil tiene 5 Mundiales, el máximo en la historia del fútbol.</p>
+            </div>
+        </div>
+    </section>
+    
+    <footer>
+        <p>&copy; 2023 Fútbol Sudamericano. Todos los derechos reservados.</p>
+    </footer>
+
+    <script>
+        let indice = 0;
+        const carrusel = document.getElementById('carrusel');
+        const tarjetas = document.querySelectorAll('.jugador-card');
+        const total = tarjetas.length;
+
+        function moverCarrusel(direccion) {
+            indice += direccion;
+            if (indice < 0) indice = total - 1;
+            if (indice >= total) indice = 0;
+            carrusel.style.transform = `translateX(-${indice * 320}px)`;
+        }
+    </script>
+</body>
+</html>
